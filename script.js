@@ -1,54 +1,73 @@
-//Retrieve DOM elements
-// TODO: Get references to the required DOM elements using document.getElementById()
 
-// Array of predefined poster objects
 const posters = [
     {
-      image: 'image-url-1.jpg',
-      title: 'Poster 1',
-      quote: 'Quote 1',
+      image: 'https://images.unsplash.com/photo-1687170570291-25fa0b2ac336?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2098&q=80',
+      title: 'No Excuses',
+      quote: "'What comes around goes around like a hula hoop'",
     },
     {
-      image: 'image-url-2.jpg',
-      title: 'Poster 2',
-      quote: 'Quote 2',
+      image: "https://images.unsplash.com/photo-1687226013074-5d59ffeb2625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60",
+      title: 'Apotheosis',
+      quote: "'Reach for the stars aim for the moon'",
     },
     {
-      image: 'image-url-3.jpg',
-      title: 'Poster 3',
-      quote: 'Quote 3',
+        image: "https://plus.unsplash.com/premium_photo-1686975618041-8f4971436c47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+        title: 'Freedom',
+        quote: 'What doesnt kill you makes you stronger',
     },
-    // Add more poster objects as needed
+     
+    
   ];
+   const randomButton=document.getElementById("randomize")
+   console.log(randomButton)
+    randomButton.onclick = generateRandomPoster;
+
+
+   
+
+  let imgRef = document.getElementById("poster-image")
+  let imgTitle=document.getElementById("poster-title")
+  let imgQuote=document.getElementById("poster-quote")
+  console.log('imgRef', imgRef)
+
   
-  // Event listener for randomize button
-  // TODO: Add an event listener to the randomizeButton that calls a function when clicked
-  
-  // Event listener for submit button
-  // TODO: Add an event listener to the submitButton that calls a function when clicked
-  
-  // Function to generate a random poster
   function generateRandomPoster() {
-    // TODO: Generate a random index within the range of the posters array length
-  
-    // TODO: Retrieve the random poster object from the posters array
-  
-    // TODO: Call the function to update the DOM with the values from the random poster object
+    let random=(Math.floor(Math.random()*posters.length));
+   
+    imgRef.setAttribute('src', posters[random].image)
+    imgTitle.innerHTML=posters[random].title;
+    imgQuote.innerHTML=posters[random].quote;
+    
+    
   }
   
-  // Function to generate a custom poster
-  function generateCustomPoster(event) {
+ 
+
+ let form=document.getElementById('poster-form')
+
+
+
+  form.addEventListener('submit',function(event){
     event.preventDefault();
+    let quote=document.getElementById('form-quote').value;
+    let title = document.getElementById('form-title').value;
+    
+    console.log(quote);
+    console.log(title);
+    updatePoster(title,quote)
+  })
   
-    // TODO: Retrieve the entered quote and author from the input fields
+    
   
-    // TODO: Create a custom poster object with the entered values
+   
   
-    // TODO: Call the function to update the DOM with the values from the custom poster object
-  }
   
   // Function to update the poster content in the DOM
-  function updatePoster(imageUrl, title, quote) {
+  function updatePoster( title, quote) {
     // TODO: Update the DOM with the values provided for the poster image, title, and quote
+    imgTitle.innerHTML=title
+    imgQuote.innerHTML=quote;
+    imgRef.setAttribute("src",'https://images.unsplash.com/photo-1614915760393-96de312e2bf5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eW91JTIwd2VsY29tZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60')
+    
   }
   
